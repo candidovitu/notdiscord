@@ -1,0 +1,25 @@
+<div class="auth-container">
+    <div class="title">
+        <h2>Bem-vindo(a) de volta!</h2>
+        <p>Estamos felizes em ver você novamente!</p>
+    </div>
+    <form onsubmit="post('/login', {
+        email: $(this).find('input[name=\'email\'').val(),
+        password: $(this).find('input[name=\'password\'').val()
+    });">
+
+        <div class="input-container">
+            <span>email</span>
+            <input type="email" name="email">
+        </div>
+
+        <div class="input-container">
+            <span>senha</span>
+            <input type="password" name="password">
+        </div>
+
+        <button class="submit">Entrar</button>
+        <span class="tip">Ainda não tem uma conta? <a onclick="loadPage('/login/create');">Registre-se</a></span>
+    </form>
+
+</div>

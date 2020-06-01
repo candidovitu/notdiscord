@@ -1,0 +1,99 @@
+<div class="app" data-guildid="{{toString guild._id}}" data-currentchannel="{{toString currentChannel._id}}">
+    <input type="file" style="display: none;" id="attachFile">
+    <div class="user-modal-container modal-container">
+        <div class="user-modal modal">
+            <header class="modal-header">
+
+                <div class="user">
+                    <img src="https://cdn.discordapp.com/avatars/535940900157784064/ef251548b9ec08ba0951a3785221d46c.png" class="avatar">
+                    <div class="details">
+                        <span class="name">Deleted User<small class="discriminator">#0000</small></span>
+                        <div class="badges"></div>
+                    </div>
+                </div>
+
+            </header>
+        </div>
+    </div>
+
+    <ul class="guilds">
+        <span class="server-name">{{guild.name}}</span>
+        {{#each guilds}}
+        <li onclick="loadPage('/app/guild/{{toString this._id}}');"
+            onmouseover="serverName($(this), '{{this.name}}');"
+            onmouseout="$('.app .guilds .server-name').hide();">
+            <img src="{{this.icon}}">
+        </li>
+        {{/each}}
+        <li class="btn" onclick="
+        const name = prompt('Insira o nome do servidor');
+        post('/app/guild/create', {name});
+        ">
+            <i class="fas fa-plus icon"></i>
+        </li>
+    </ul>
+
+    <div class="channels">
+        <div class="menu">
+            <span class="name">{{guild.name}} <i class="fas fa-sign-out-alt btn-exit" onclick="post('/app/guild/exit', {
+                guildId: '{{toString guild._id}}'
+            })"></i></span>
+        </div>
+        <ul class="channel-menu" data-channelid="000">
+            <li class="delete" onclick="deleteChannel($(this).parent().data('channelid'));">Excluir canal</li>
+            <div class="border"></div>
+            <li>Copiar ID</li>
+        </ul>
+        <ul class="list">
+            {{#ifEquals session._id guild.ownerId}}
+            <span class="btn create-channel" onclick="
+                          const name = prompt('Insira o nome do canal');
+                          post('/app/channel/create', {name, guildId: $('.app').data('guildid')});
+            ">Criar canal</span>
+            {{/ifEquals}}
+
+            {{#each channels}}
+              <li class="channel" data-channelid="{{toString this._id}}"><i class="fas fa-hashtag icon"></i> {{this.name}}</i></li>
+            {{/each}}
+        </ul>
+    </div>
+
+    <div class="channel-container">
+        <div class="title"><i class="fas fa-hashtag icon"></i> {{currentChannel.name}}</div>
+        <div class="messages">
+
+            {{#each channelMessages}}
+
+             {{#if this.attach}}
+               <div class="message" data-author="{{this.author}}">
+                   <img src="https://discordapp.com/assets/322c936a8c8be1b803cd94861bdfa868.png" onclick="openUserDetails('{{this.author}}');" class="avatar">
+                   <div class="content">
+                       <div class="username"><span class="val">Deleted User</span> <small class="date">{{formatDate this.creation}}</small></div>
+                       <img src="{{this.content}}" class="attach" onclick="open('{{this.content}}', '_blank')">
+                   </div>
+               </div>
+             {{else}}
+               <div class="message" data-author="{{this.author}}">
+                   <img src="https://discordapp.com/assets/322c936a8c8be1b803cd94861bdfa868.png" onclick="openUserDetails('{{this.author}}');" class="avatar">
+                   <div class="content">
+                       <div class="username"><span class="val">Deleted User</span> <small class="date">{{formatDate this.creation}}</small></div>
+                       <span class="value">{{this.content}}</span>
+                   </div>
+               </div>
+             {{/if}}
+
+            {{/each}}
+
+        </div>
+
+        <div class="input-container">
+            <div class="buttons">
+                <div class="btn attach"><i class="fas fa-file-alt"></i></div>
+            </div>
+            <input id="msg-submit" type="text" class="message-input">
+            <small class="typing"></small>
+        </div>
+
+    </div>
+
+</div>

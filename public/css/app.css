@@ -1,0 +1,421 @@
+body{
+    background: #2C2F33;
+    overflow: hidden;
+}
+
+*{
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.app{
+    position: relative;
+}
+
+.app .guilds{
+    list-style: none;
+    background: #23272A;
+    height: 97vh;
+    padding: 10px;
+    width: 4%;
+    display: inline-block;
+    overflow: auto;
+}
+
+.app .guilds .server-name{
+    background: #111;
+    border-radius: 3px;
+    position: absolute;
+    display: none;
+    padding: 5px 10px;
+    z-index: 10;
+    left: 4.7rem;
+}
+
+.app .guilds .server-name::before{
+    content: ' ';
+    border: solid #111;
+    position: absolute;
+    left: -3px; top: 9px;
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(135deg);
+}
+
+.app .guilds li img{
+    cursor: pointer;
+    justify-content: center;
+    margin: 5px auto;
+    display: block;
+    border-radius: 50%;
+    width: 3rem;
+    transition: .3s;
+}
+
+.app .guilds li:not(.btn):hover::before{
+    content: ' ';
+    transform: translateY(14px);
+    padding: 8px 1.3px;
+    border-radius: 0 10px 10px 0;
+    background: #FFF;
+    position: absolute;
+    left: 0;
+}
+
+.app .guilds li img:hover{
+    border-radius: 40%;
+}
+
+.app .guilds .btn{
+    margin-top: 10px;
+    background: #2C2F33;
+    border-radius: 50%;
+    font-size: 20px;
+    padding: 10px 0;
+    text-align: center;
+    transition: .3s;
+}
+
+.app .guilds .btn:hover{
+    border-radius: 40%;
+    cursor: pointer;
+    background: #61ff8e;
+}
+
+.app .guilds .btn:hover .icon{
+    color: #FFF;
+}
+
+.app .guilds .btn .icon{
+    padding: 6px 0;
+    color: #61ff8e;
+}
+
+.app .channels{
+    position: absolute;
+    top: 0;
+    background: #2f3136;
+    display: inline-block;
+    width: 15%;
+    height: 100vh;
+}
+
+.app .channels .menu .name{
+    display: block;
+    font-size: 13px;
+    margin: 8px 0 8px 5px;
+    font-weight: 500;
+}
+
+.app .channels .menu .btn-exit{
+    color: #54565c;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+}
+
+.app .channels .channel-menu{
+    background: #18191c;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.20);
+    position: absolute;
+    top: 60px;
+    left: 15px;
+    z-index: 5;
+    width: 8rem;
+    display: none;
+    padding: 10px;
+    list-style: none;
+}
+
+.app .channels .channel-menu li{
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #adadad;
+}
+
+.app .channels .channel-menu li:hover{
+    background: #7289DA;
+    color: #FFF;
+}
+
+.app .channels .channel-menu li.delete{
+    color: #d64c4c;
+}
+
+.app .channels .channel-menu li.delete:hover{
+    background: #d64c4c;
+    color: #FFF;;
+}
+
+.app .channels .channel-menu .border{
+    width: 100%;
+    height: 1px;
+    padding: 2px 0 0 0;
+    margin: 0px auto;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06)
+}
+
+.app .channels .menu{
+    background: #2f3136;
+    padding: 5px;
+    border-bottom: solid 2px #222427;
+}
+
+.app .channels .list{
+    padding: 10px 16px;
+    list-style: none;
+    height: 90%;
+    overflow: auto;
+}
+
+.app .channels .list .btn.create-channel{
+    background: #7289DA;
+    display: block;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);
+    transform: translateX(-3px);
+    padding: 4px 6px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.app .channels .list .channel{
+    margin: 8px 0;
+    padding: 4px 0;
+    border-radius: 2px;
+    color: #a8a8a8;
+    cursor: pointer;
+}
+
+.app .channels .list .channel:hover{
+    background: rgba(128, 124, 124, 0.274);
+    color: #acacac;
+}
+
+.app .channels .list .channel .icon{
+    padding: 0 5px;
+    font-size: 15px;
+    color: #7a7a7a;
+}
+
+.app .channels .list .channel .btn-delete{
+    color: #f61c1c;
+    padding-right: 5px;
+    float: right;
+    display: none;
+}
+
+.app .channels .list .channel:hover .btn-delete{
+    display: block;
+}
+
+.app .channel-container{
+    position: absolute;
+    top: 0;
+    left: 20%;
+    background: #36393f;
+    display: inline-block;
+    width: 80%;
+    height: 100vh;
+    overflow: auto;
+}
+
+.app .channel-container .title{
+    background: #36393f;
+    overflow: hidden;
+    z-index: 22;
+    padding: 12px 10px 12px;
+    font-weight: 500;
+    position: fixed;
+    width: 80%;
+    border-bottom: solid 2px #222427;
+}
+
+.app .channel-container .messages{
+    padding: 10px;
+    height: 5px;
+}
+
+.app .channel-container .messages .message{
+    padding: 5px 0;
+}
+
+.app .channel-container .messages .message .date{
+    color: #72767d;
+}
+
+.app .channel-container .messages .message .avatar{
+    width: 2rem;
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.app .channel-container .messages .message .avatar:active{
+    transform: translateY(1px);
+}
+
+.app .channel-container .messages .message .content{
+    display: inline-block;
+    padding-left: 8px;
+    max-width: 100%;
+    margin-left: 30px;
+}
+
+.app .channel-container .messages .message .content .username{
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    font-weight: 400;
+}
+
+
+.app .channel-container .messages .message .content .username .bot-badge{
+    text-transform: uppercase;
+    background: #7289DA;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-weight: 500;
+    font-size: 10px;
+}
+
+.app .channel-container .messages .message .content .value{
+    word-break: break-all;
+    -webkit-user-select: text;
+    display: block;
+    color: #e6e6e6;
+}
+
+.app .channel-container .messages .message .content .attach{
+    width: 25rem;
+    display: block;
+    cursor: pointer;
+}
+
+.app .channel-container .messages .message:first-child{
+    margin-top: 3rem;
+}
+
+.app .channel-container .messages .message:last-child{
+    margin-bottom: 5rem;
+}
+
+.app .channel-container .input-container{
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    padding: 10px 0;
+    padding-left: 20px;
+    background: #36393f;
+}
+
+.app .channel-container .input-container .buttons{
+    position: absolute;
+    font-size: 20px;
+    top: 17px; left: 75.5%;
+    cursor: pointer;
+    display: flex;
+}
+
+.app .channel-container .input-container .buttons .btn i{
+    color: #a5a9af;
+}
+
+.app .channel-container .input-container .buttons .btn i:hover{
+    color: #FFF;
+}
+
+.app .channel-container .input-container .typing{
+    display: block;
+    visibility: hidden;
+    transform: translateY(5px);
+}
+
+.app .channel-container .input-container .message-input{
+    justify-content: center;
+    background: #40444b;
+    color: #c8c8c8;
+    padding: 10px 8px;
+    width: 76%;
+}
+
+.app .user-modal-container{
+    display: none;
+}
+
+.app .modal-container .modal{
+    animation: modalShow .3s;
+}
+
+.app .user-modal-container .user-modal{
+    position: absolute;
+    z-index: 100;
+    width: 45%;
+    height: 25rem;
+    margin: auto;
+    left: 0; right: 0; top: 5rem;
+    background: #2f3136;
+    border-radius: 5px;
+}
+
+.app .user-modal-container .user-modal .modal-header{
+    border-radius: 5px 5px 0 0;
+    background: #202225;
+    padding: 20px;
+}
+
+.app .user-modal-container .user-modal .modal-header .user .avatar{
+    width: 5rem;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.app .user-modal-container .user-modal .modal-header .user .details{
+    display: inline-block;
+    position: absolute;
+    top: 35px;
+    transform: translateX(15px);
+}
+
+.app .user-modal-container .user-modal .modal-header .user .details .name{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.app .user-modal-container .user-modal .modal-header .user .details .name .discriminator{
+    font-weight: 400;
+    color: #7e7e7e;
+}
+
+.app .user-modal-container .user-modal .modal-header .user .details .badges .badge{
+    display: inline-block;
+}
+
+.app .user-modal-container .user-modal .modal-header .user .details .badges .badge:not(:first-of-type){
+    margin-left: 5px;
+}
+
+.app .user-modal-container::before{
+    content: ' ';
+    position: absolute;
+    z-index: 99;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: #000;
+    opacity: 0.85;
+}
+

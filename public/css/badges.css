@@ -1,0 +1,24 @@
+div.badge{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+    cursor: pointer;
+    height: 26px;
+    width: 29px;
+}
+
+div.badge.nitro{
+    background-image: url("https://discord.com/assets/386884eecd36164487505ddfbac35a9d.svg");
+}
+
+div.badge.staff{
+    background-image: url("https://discord.com/assets/4358ad1fb423b346324516453750f569.svg");
+}
+
+div.badge.bugHunter{
+    background-image: url("https://discord.com/assets/f61b8981e92feead854f52e5a1ba14f0.svg");
+}
+
+div.badge.partner{
+    background-image: url("https://discord.com/assets/33fedf082addb91d88abc272b4b18daa.svg");
+}

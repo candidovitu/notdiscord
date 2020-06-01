@@ -1,0 +1,119 @@
+body{
+    background: url('/static/img/auth_bg.jpg');
+    background-size: 100% auto;
+}
+
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login .logo{
+    width: 15rem;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.login .wave{
+    position: absolute;
+    z-index: -1;
+    left: 15%;
+    bottom: -34%;
+    width: 17%;;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.login .auth-container{
+    background: #36393f;
+    color: #8e9297;
+    width: 50%;
+    min-height: 26rem;
+    padding: 10px;
+    display: block;
+    border-radius: 4px;
+    margin: 0;
+    transform: translateY(23%);
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20);
+}
+
+.login .auth-container form{
+    width: 90%;
+    margin: auto;
+}
+
+.login .auth-container .title{
+    text-align: center;
+    padding: 40px 0;
+}
+
+.login .auth-container h2{
+    margin-bottom: 15px;
+    display: block;
+}
+
+.login .auth-container .title p{
+    color: #b9bbbe;
+}
+
+.login .auth-container .input-container{
+    width: 100%;
+    margin: auto;
+}
+
+.login .auth-container .input-container span{
+    display: block;
+    color: #8e9297;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 10px 0;
+}
+
+.login .auth-container .input-container input{
+    width: 96%;
+    background: #23272A;
+    border: solid 1px #1d1d1d;
+    padding: 10px;
+    border-radius: 4px;
+    transition: .3s;
+}
+
+.login .auth-container .input-container input:hover{
+    border: solid 1px #070707;
+}
+
+.login .auth-container .input-container input:focus{
+    border: solid 1px #7289DA;
+}
+
+.login .auth-container button{
+    color: #FFF;
+    background: #7289DA;
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin: 20px auto;
+    cursor: pointer;
+    border: none; outline: none;
+    padding: 10px 0;
+    font-weight: 500;
+    border-radius: 3px;
+    transition: .4s;
+}
+
+.login .auth-container button:hover{
+    background: #677cc8;
+}
+
+.login .auth-container form .tip{
+    color: #8e9297;
+    font-weight: 300;
+}
+
+.login .auth-container form .tip a{
+    color: #7289DA;
+    text-decoration: none;
+}

@@ -1,0 +1,30 @@
+<div class="auth-container" style="height: 29rem;transform: translateY(18%);">
+    <div class="title">
+        <h2 style="margin-bottom: 0px;">Crie uma conta</h2>
+    </div>
+    <form onsubmit="post('/login/create', {
+        email: $(this).find('input[name=\'email\'').val(),
+        username: $(this).find('input[name=\'username\'').val(),
+        password: $(this).find('input[name=\'password\'').val()
+    });">
+
+        <div class="input-container">
+            <span>email</span>
+            <input type="email" name="email">
+        </div>
+
+        <div class="input-container">
+            <span>usuário</span>
+            <input type="text" name="username">
+        </div>
+
+        <div class="input-container">
+            <span>senha</span>
+            <input type="password" name="password">
+        </div>
+
+        <button class="submit">Continuar</button>
+        <span class="tip">Já tem uma conta? <a onclick="loadPage('/login/');">Entrar</a></span>
+    </form>
+
+</div>
