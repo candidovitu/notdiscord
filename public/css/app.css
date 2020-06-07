@@ -258,6 +258,7 @@ body{
 
 .app .channel-container .messages .message .avatar{
     width: 2rem;
+    height: 2rem;
     cursor: pointer;
     display: inline-block;
     position: absolute;
@@ -380,6 +381,7 @@ body{
 
 .app .user-modal-container .user-modal .modal-header .user .avatar{
     width: 5rem;
+    height: 5rem;
     border-radius: 50%;
     display: inline-block;
 }
